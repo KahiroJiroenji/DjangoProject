@@ -6,7 +6,7 @@ from os.path import os
 import uuid
 
 # Create your models here.
-class Estudantes(models.Model):
+class Aluno(models.Model):
     nome = models.CharField(max_length=250)
     cf = models.CharField(max_length=250, verbose_name='Código Funcional')
     cpf = models.CharField(max_length=11, verbose_name='CPF')
@@ -83,8 +83,8 @@ class Turma(models.Model):
 
 class AlunoTurma(models.Model):
 
-    materia = models.ForeignKey(Materia, on_delete=models.DO_NOTHING, db_column='materia')
-    dia_semana = models.CharField(max_length=1, null=False, blank=False, choices=DIA_LST)
+    turma = models.ForeignKey(Turma, on_delete=models.DO_NOTHING, db_column='turma')
+    aluno = models.ForeignKey(Aluno, on_delete=models.DO_NOTHING, db_column='aluno')
     hora_inicio = models.TimeField(blank=True, null=True)
     hora_termino = models.TimeField(blank=True, null=True)
     data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de cadastro:')

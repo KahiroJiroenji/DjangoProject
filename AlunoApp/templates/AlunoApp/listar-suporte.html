@@ -1,0 +1,32 @@
+{% block conteudo %}
+    <a>
+        <button type="button" class="btn btn-sm btn-success fa fa-file-o pull-right" id="cmd-novo" data-url="#{% url 'agendapasseio:cadastrar-suporte' %}">
+             Novo 
+        </button>
+    </a>
+    <br>
+    <br>
+    <table class="table table-bordered table-striped tabela-datatables" ui-jp="dataTable">
+        <thead>
+            <tr>
+                <th>Conteúdo</th>
+                <th>Ativo</th>
+                <th>Editar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for suporte in suporte_lst %}
+                   <tr>
+                       <td>{% autoescape off %}{{ suporte.conteudo|truncatewords:30 }}{% endautoescape %}</td>
+                       <td>{% if suporte.ativo %} Sim {% else %} Não {% endif %}</td>
+                       <td><button type="button" class="btn btn-sm btn-warning fa fa-edit" data-url="{% url 'agendapasseio:alterar-suporte' suporte.id %}"></button></td>
+                   </tr>
+            {% endfor %}
+        
+        </tbody>
+    </table>
+    
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

@@ -22,8 +22,12 @@ from django.contrib.auth.decorators import login_required
 from django.urls import include, path, re_path
 from django.views.static import serve
 from django.views.static import serve
+from AlunoApp import views as aluno_views
 
 
 urlpatterns = [
-    path('djangoproject/admin/', admin.site.urls),
+    path('DjangoProject/admin/', admin.site.urls),
+
+    path('DjangoProject/', aluno_views.IndexTemplateView.as_view(), name='index'),
+    path('', aluno_views.IndexTemplateView.as_view(), name='index'),
 ]

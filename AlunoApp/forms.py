@@ -9,7 +9,7 @@ from django.forms.widgets import Select, CheckboxSelectMultiple, SelectMultiple,
 from django_summernote.widgets import SummernoteWidget
 # from usuario.models import Usuario
 
-from .models import Aluno, Materia, Turma, AlunoTurma
+from .models import Aluno, Turma, AlunoTurma
 
     
 class AlunoForm(forms.ModelForm):
@@ -28,7 +28,7 @@ class AlunoForm(forms.ModelForm):
             Row(
                 Div(Field('nome'), css_class="col-md-8"),
                 Div(Field('data_nasc'), css_class="col-md-4"),
-            )
+            ),
             Div(Field('email', css_class="email"), css_class="col-md-12 email"),
                 Row(
                     Div(Field('cpf', css_class="cpf"), css_class="col-md-6"),
@@ -51,16 +51,6 @@ class AlunoForm(forms.ModelForm):
                 ),
                 Div(Field('ativo'), css_class="col-md-12"),
         )
-
-
-
-class MateriaForm(forms.ModelForm):
-    
-    class Meta:
-        model = Materia
-        fields = '__all__'
-        exclude = ['data_alteracao',]
-
 
 
 class TurmaForm(forms.ModelForm):

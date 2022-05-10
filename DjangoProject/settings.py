@@ -18,6 +18,7 @@ import re
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
+HOSTNAME = socket.gethostname()
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
@@ -44,6 +45,10 @@ INSTALLED_APPS = [
 	'DjangoProject',
 #    Apps internos 
 	'AlunoApp',
+#    Pacotes instalados / terceiros
+    'django_summernote',
+    'crispy_forms',
+    'simple_history',
     
 ]
 

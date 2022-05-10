@@ -17,6 +17,7 @@ class AlunoForm(forms.ModelForm):
     class Meta:
         model = Aluno
         fields = '__all__'
+        exclude = ['data_alteracao',]
 
     def __init__(self, *args, **kwargs):
         self.espaco_id = kwargs.pop('espaco_id', None)
@@ -53,60 +54,32 @@ class AlunoForm(forms.ModelForm):
 
 
 
-class DevolutivaForm(forms.ModelForm):
+class MateriaForm(forms.ModelForm):
     
     class Meta:
-        model = Devolutiva
+        model = Materia
         fields = '__all__'
+        exclude = ['data_alteracao',]
 
 
-class SolicitacaoForm(forms.ModelForm):
 
+class TurmaForm(forms.ModelForm):
+    
     class Meta:
-        model = Solicitacao
+        model = Turma
+        fields = '__all__'
+        exclude = ['data_alteracao',]
+
+    def __init__(self, *args, **kwargs):
+        super(TurmaForm, self).__init__(*args, **kwargs)
+
+
+
+class AlunoTurmaForm(forms.ModelForm):
+    
+    class Meta:
+        model = AlunoTurma
         fields = '__all__'
 
     def __init__(self, *args, **kwargs):
-        self.usuario = kwargs.pop('usuario', None)
-        super(SolicitacaoForm, self).__init__(*args, **kwargs)
-        solicitante =  Usuario.objects.filter(pk=self.usuario.pk)
-        self.fields['solicitante'].queryset = solicitante
-        # self.fields['solicitante'].initial = solicitante[0]
-        self.fields['solicitante'].widget = forms.HiddenInput()
-        self.fields['tematica'].queryset = Tematica.objects.all()
-        self.fields['modalidade'].queryset = Modalidade.objects.none()
-        self.fields['rascunho'].widget = forms.HiddenInput()
-        self.fields['fluxo_solicitacao'].widget = forms.HiddenInput()
-
-class SolicitacaoEspacoForm(forms.ModelForm):
-    
-    class Meta:
-        model = SolicitacaoEspaco
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(SolicitacaoEspacoForm, self).__init__(*args, **kwargs)
-
-        self.fields['solicitacao'].queryset = Solicitacao.objects.none()
-
-        if 'solicitacao' in self.data:
-            try:
-                solicitacao = int(self.data.get('solicitacao'))
-                self.fields['solicitacao'].queryset = Solicitacao.objects.filter(pk=solicitacao)
-                
-            except (ValueError, TypeError):
-                pass  # invalid input from the client; ignore and fallback to empty City queryset
-        elif self.instance.pk:
-            self.fields['solicitacao'].queryset = self.instance.solicitacao
-
-
-
-class LocalForm(forms.ModelForm):
-    
-    class Meta:
-        model = Local
-        fields = '__all__'
-
-    def __init__(self, *args, **kwargs):
-        super(LocalForm, self).__init__(*args, **kwargs)
-
+        super(AlunoTurmaForm, self).__init__(*args, **kwargs)

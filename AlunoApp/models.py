@@ -30,37 +30,6 @@ class Aluno(models.Model):
     def __str__(self):
         return self.nome
 
-class Materia(models.model):
-    MATERIA_LST = (
-        ('1','Português'),
-        ('2','Matemática'),
-        ('3','Ciências'),
-        ('4','Artes'),
-        ('5','Educação Física'),
-    )
-    NIVEL_LST(
-        ('1','Estágio I'),
-        ('2','Estágio II'),
-        ('3','1ª Série'),
-        ('4','2ª Série'),
-        ('5','3ª Série'),
-        ('6','4ª Série'),
-        ('7','5ª Série'),
-    )
-    nome = models.CharField(max_length=1, null=False, blank=False, choices=MATERIA_LST)
-    nivel = models.CharField(max_length=1, null=False, blank=False, choices=NIVEL_LST)  
-    ativo = models.BooleanField()
-    data_alteracao = models.DateTimeField(blank=True, null=True, verbose_name='Data de alteração:')
-    data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de cadastro:')
-    #criado_por = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='criado_por')
-
-    class Meta:
-        db_table = 'alunoapp_materia'
-
-    def __str__(self):
-        return self.nome
-
-
 class Turma(models.Model):
     DIA_LST = (
         ('1','Segunda'),
@@ -69,7 +38,14 @@ class Turma(models.Model):
         ('4','Quinta'),
         ('5','Sexta'),
     )
-    materia = models.ForeignKey(Materia, on_delete=models.DO_NOTHING, db_column='materia')
+    MATERIA_LST = (
+        ('1','Português'),
+        ('2','Matemática'),
+        ('3','Ciências'),
+        ('4','Artes'),
+        ('5','Educação Física'),
+    )
+    materia = models.CharField(max_length=1, null=False, blank=False, choices=MATERIA_LST)
     dia_semana = models.CharField(max_length=1, null=False, blank=False, choices=DIA_LST)
     hora_inicio = models.TimeField(blank=True, null=True)
     hora_termino = models.TimeField(blank=True, null=True)

@@ -2,95 +2,102 @@
 {% block conteudo %}
 
 <!DOCTYPE html>
-<html lang="en">
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-<head>
-	<meta charset="utf-8">
-	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+		<title>CRUD Alunos Django</title>
+		<meta content="" name="description">
+		<meta content="" name="keywords">
 
-	<title>CRUD Alunos Django</title>
-	<meta content="" name="description">
-	<meta content="" name="keywords">
+		<!-- Google Fonts -->
+		<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
 
-	<!-- Google Fonts -->
-	<link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i' %}" rel="stylesheet">
+		<!-- Bootstrap Simples -->
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+		
+        <!--  Scripts -->
+		<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+		<script src="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css"></script>
+		<script src=https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js></script>
+	</head>
 
-	<!-- Vendor CSS Files -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
-	<link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css" type="text/css" />
-</head>
-
-<body>
-	<div class="container col-md-12">
-		<div class="section" id="titulo">
-			<br>
-			<h1 class="text-center">CRUD SIMPLES DE INSERÇÃO DE DADOS EDUCACIONAIS</h1>	
-			<hr>
-		</div>
-		<div class="section" id="links">
-			<br><br>
-			<h2 class="text-center">O que você deseja visualizar/manejar?</h2>
-			<br>
-			<br>
-			<div class="row col-md-12">
-				<div class=" col-md-4">
-					<a href="{% url 'AlunoApp:listar-aluno' %}"><button type="button" class="btn btn-sm btn-primary col-md-12" ><h3 class="sm-h3">Lista de Estudantes</h3></button></a>
-				</div>
-				<div class=" col-md-4">
-					<button type="button" class="btn btn-sm btn-success col-md-12" data-url="{% url 'AlunoApp:index' %}"><h3 class="sm-h3">Lista de Turmas</h3></button>
-				</div>
-				<div class=" col-md-4">
-					<button type="button" class="btn btn-sm btn-warning col-md-12" data-url="{% url 'AlunoApp:index' %}"><h3 class="sm-h3">Lista de Estudantes por Turma</h3></button>
+	<body>
+		<div class="container col-md-12">
+			<div class="section" id="titulo">
+				<br>
+				<h1 class="text-center">CRUD SIMPLES DE INSERÇÃO DE DADOS EDUCACIONAIS</h1>	
+				<hr>
+			</div>
+			<div class="section" id="links">
+				<br><br>
+				<h2 class="text-center">O que você deseja visualizar/manejar?</h2>
+				<br>
+				<br>
+				<div class="row col-md-12">
+					<div class="col-md-4">
+						<a href="{% url 'AlunoApp:listar-aluno' %}"><button type="button" class="btn btn-sm btn-primary col-md-12" ><h3 class="sm-h3">Lista de Estudantes</h3></button></a>
+					</div>
+					<div class="col-md-4">
+						<a href="{% url 'AlunoApp:listar-turma' %}"><button type="button" class="btn btn-sm btn-success col-md-12" ><h3 class="sm-h3">Lista de Turmas</h3></button></a>
+					</div>
+					<div class="col-md-4">
+						<a href="{% url 'AlunoApp:listar-aluno-turma' %}"><button type="button" class="btn btn-sm btn-warning col-md-12" ><h3 class="sm-h3">Lista de Estudantes por Turma</h3></button></a>
+					</div>
 				</div>
 			</div>
 		</div>
-	</div>
-	<footer class="bg-light text-center text-lg-start" id="footer">
-		<!-- Copyright -->
-		<div class="row p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-			<div class="col-md-6 text-end">
-				© 2022 | Guilherme Picoli dos Santos	
+		<footer class="bg-light text-center text-lg-start" id="footer">
+			<!-- Copyright -->
+			<div class="row p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+				<div class="col-md-6 text-end">
+					© 2022 | Guilherme Picoli dos Santos	
+				</div>
+				<div class="col-md-6 text-start">
+					LinkedIn: <a href="https://www.linkedin.com/in/guipsantos/">@guipsantos</a>	
+				</div>
+			
 			</div>
-			<div class="col-md-6 text-start">
-				LinkedIn: <a href="https://www.linkedin.com/in/guipsantos/">@guipsantos</a>	
-			</div>
-		  
-		</div>
-		<!-- Copyright -->
-	  </footer>
-</body>
+			<!-- Copyright -->
+		</footer>
+	</body>
 
-<style>
-	body{
-		padding:5px;
-		background-color:rgb(196, 221, 228);
-		color:rgb(15, 2, 88) ;
-	}
-	#footer {
-		position: fixed;
-		height: 60px;
-		bottom: 0px;
-		left: 0px;
-		right: 0px;
-		margin-bottom: 0px;
-	}
-	a{
-		text-decoration: none;
-		color:black;
-	}
-	a:hover{
-		color:rgb(55, 0, 255);
-	}
-	.btn-sm{
-		padding:30px;
-		height:160px;
-		margin:0px 15px 0px 15px
-	}
-	.sm-h3{
-		font-size: 1.6rem;
-	}
-</style>
+
 </html>
+{% endblock %}
+
+{% block style %}
+	<style>
+		body{
+			padding:5px;
+			background-color:rgb(196, 221, 228);
+			color:rgb(15, 2, 88) ;
+		}
+		#footer {
+			position: fixed;
+			height: 60px;
+			bottom: 0px;
+			left: 0px;
+			right: 0px;
+			margin-bottom: 0px;
+		}
+		a{
+			text-decoration: none;
+			color:black;
+		}
+		a:hover{
+			color:rgb(55, 0, 255);
+		}
+		.btn-sm{
+			padding:30px;
+			height:160px;
+			margin:0px 15px 0px 15px
+		}
+		.sm-h3{
+			font-size: 1.6rem;
+		}
+	</style>
 {% endblock %}
 
 {% block scripts %}

@@ -4,7 +4,7 @@
 		<meta charset="utf-8">
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-		<title>CRUD Alunos - Alunos</title>
+		<title>CRUD Alunos - Alunos em Turmas</title>
 		<meta content="" name="description">
 		<meta content="" name="keywords">
 
@@ -23,15 +23,15 @@
     <body>
         <div class="col-md-12">
             <br>
-            <a href="{% url 'AlunoApp:cadastrar-aluno' %}">
-                <button type="button" class="btn btn-success fa fa-file-o pull-right" id="cmd-novo">
-                    Cadastrar Estudante
-                </button>
-            </a>
+                <a>
+                    <button type="button" class="btn btn-success fa fa-file-o pull-right" id="cmd-novo" data-url="#{% url 'AlunoApp:cadastrar-aluno' %}">
+                        Cadastrar Aluno em Turma
+                    </button>
+                </a>
             <br><br>
         </div>
-        <br>
-        <h1 class="text-center">Lista de Estudantes</h1>
+
+        <h1 class="text-center col-md-12">Lista de Alunos em Turmas</h1>
         <br>
         {% csrf_token %}
         <table class="table table-bordered table-striped tabela-datatables" id="tabela-alunos">
@@ -97,7 +97,6 @@
         }
         .pull-right{
             float:right;
-            margin-right:20px;
         }
 	</style>
 {% endblock %}

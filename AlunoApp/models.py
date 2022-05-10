@@ -8,7 +8,6 @@ import uuid
 # Create your models here.
 class Aluno(models.Model):
     nome = models.CharField(max_length=250)
-    cf = models.CharField(max_length=250, verbose_name='Código Funcional')
     cpf = models.CharField(max_length=11, verbose_name='CPF')
     telefone_um = models.CharField(max_length=15, verbose_name='Telefone')
     telefone_dois = models.CharField(max_length=15, verbose_name='Outro Telefone', blank=True, null=True)
@@ -17,6 +16,7 @@ class Aluno(models.Model):
     numero = models.CharField(max_length=20, verbose_name='Nº', blank=True, null=True)
     complemento = models.CharField(max_length=160, verbose_name='Nº', blank=True, null=True)
     cidade = models.CharField(max_length=100, verbose_name='Nº', blank=False, null=False)
+    email = models.CharField(max_length=100)
     ativo = models.BooleanField()
     historico = HistoricalRecords()
     data_alteracao = models.DateTimeField(blank=True, null=True, verbose_name='Data de alteração:')

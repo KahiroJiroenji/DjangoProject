@@ -52,6 +52,7 @@ class Materia(models.model):
     ativo = models.BooleanField()
     data_alteracao = models.DateTimeField(blank=True, null=True, verbose_name='Data de alteração:')
     data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de cadastro:')
+    #criado_por = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='criado_por')
 
     class Meta:
         db_table = 'alunoapp_materia'
@@ -74,6 +75,7 @@ class Turma(models.Model):
     hora_termino = models.TimeField(blank=True, null=True)
     data_alteracao = models.DateTimeField(blank=True, null=True, verbose_name='Data de alteração:')
     data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de cadastro:')
+    #criado_por = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='criado_por')
 
     class Meta:
         db_table = 'alunoapp_turma'
@@ -85,9 +87,8 @@ class AlunoTurma(models.Model):
 
     turma = models.ForeignKey(Turma, on_delete=models.DO_NOTHING, db_column='turma')
     aluno = models.ForeignKey(Aluno, on_delete=models.DO_NOTHING, db_column='aluno')
-    hora_inicio = models.TimeField(blank=True, null=True)
-    hora_termino = models.TimeField(blank=True, null=True)
     data_cadastro = models.DateTimeField(auto_now_add=True, verbose_name='Data de cadastro:')
+    #criado_por = models.ForeignKey(Usuario, on_delete=models.DO_NOTHING, related_name='criado_por')
 
     class Meta:
         db_table = 'alunoapp_aluno_turma'

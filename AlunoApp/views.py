@@ -32,3 +32,15 @@ class IndexTemplateView(TemplateView):
         
         
         return render(request, self.template_name, {'var': 'inicio'})
+
+class AlunoListView(ListView):
+    template_name = 'AlunoApp/listar-aluno.html'
+    model = Aluno
+
+    def get(self, request, **kwargs):
+        aluno_lst = Aluno.objects.all().order_by('id')  
+        
+        return render(request, self.template_name, {'aluno_lst': aluno_lst})
+        #     if request.GET.get('tipo_retorno'):
+        #     return JsonResponse(list(aluno_lst.values()), safe=False)
+        # else:

@@ -1,4 +1,3 @@
-from bolsafamilia import views as views_bf
 from django.urls.conf import path, re_path
 
 from . import views
@@ -9,7 +8,7 @@ app_name = 'AlunoApp'
 urlpatterns = [
     path('', views.IndexTemplateView.as_view(), name='index'),
     # re_path(r'^ajax/(?P<json>\w+|)/$', views.AjaxTemplateView.as_view(), name='ajax'),
-    # re_path(r'^listar/agenda/$', views.AgendaListView.as_view(), name='listar-agenda'),
+    re_path(r'^listar/aluno/$', views.AlunoListView.as_view(), name='listar-aluno'),
     # re_path(r'^cadastrar/agenda/$', views.AgendaCreateView.as_view(), name='cadastrar-agenda'),
     # re_path(r'^alterar/agenda/(?P<pk>\w+|)/$', views.AgendaUpdateView.as_view(), name='alterar-agenda'),
     # re_path(r'^excluir/agenda/(?P<pk>\w+|)$', views.AgendaDeleteView.as_view(), name='excluir-agenda'),

@@ -24,9 +24,11 @@ from django.views.static import serve
 from django.views.static import serve
 from AlunoApp import views as aluno_views
 
+app_name = 'DjangoProject'
 
 urlpatterns = [
     path('DjangoProject/admin/', admin.site.urls),
+    path('DjangoProject/AlunoApp/', include('AlunoApp.urls')),
 
     path('DjangoProject/', aluno_views.IndexTemplateView.as_view(), name='index'),
     path('', aluno_views.IndexTemplateView.as_view(), name='index'),

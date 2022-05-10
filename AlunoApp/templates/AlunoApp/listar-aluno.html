@@ -1,0 +1,40 @@
+{% block conteudo %}
+<body>
+    <a>
+        <button type="button" class="btn btn-sm btn-success fa fa-file-o pull-right" id="cmd-novo" data-url="#{% url 'AlunoApp:cadastrar-aluno' %}">
+             Novo 
+        </button>
+    </a>
+    <br>
+    <br>
+    {% csrf_token %}
+    <table class="table table-bordered table-striped tabela-datatables">
+        <thead>
+            <tr>
+                <th class="text-center">Aluno</th>
+                <th class="text-center">Código Funcional</th>
+                <th class="text-center">Criado Por:</th>
+                <th class="text-center">Criado Em:</th>
+                <th class="text-center">Alterar</th>
+                <th class="text-center">Excluir</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in aluno_lst %}
+	            <tr>
+	                <td class="text-center">{{ aluno.nome }}</td>
+	                <td class="text-center">{{ aluno.cf }}</td>
+	                <td class="text-center">{{ aluno.criado_por }}</td>
+	                <td class="text-center">{{ aluno.data_cadastro }}</td>
+	                <td class="text-center"><button type="button" class="btn btn-sm btn-warning fa fa-edit alterar" data-url="{% url 'AlunoApp:alterar-aluno' aluno.id %}"></button></td>
+	                <td class="text-center"><button type="button" class="btn btn-sm btn-danger fa fa-trash excluir" data-url="{% url 'AlunoApp:excluir-aluno' aluno.id %}"></button></td>
+	            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>		  
+{% endblock %}
+
+{% block scripts %}
+
+{% endblock %}

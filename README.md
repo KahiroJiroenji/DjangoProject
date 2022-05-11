@@ -39,7 +39,7 @@ X:\PastaSelecionadaPorVoce\DjangoProject> python manage.py runserver
 
 Se a seguinte mensagem: 'Starting development server at http://127.0.0.1:8000/' aparecer, copie este link e cole no seu navegador, e então, você terá acesso ao APP.
 
-O sistema está simples, não implementei o usuário ou a admin session.
+O sistema está simples, não implementei a classe usuário(user/perfis/auth_perms), extends, css/js estáticos ou a admin session. 
 
 Qualquer dúvida, entrar em contato via gpsantos1999@gmail.com
 

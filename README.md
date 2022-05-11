@@ -5,7 +5,7 @@ Olá,
 Eu sou Guilherme Picoli dos Santos, e desenvolvi em Python, utilizando o framework Django (v2.2.22), o Projeto DjangoProject, assim como seu APP AlunoApp, de maneira rápida para visualizarmos a estruturação básica de um CRUD relacional.
 
 Para testar o programa, será necessário baixá-lo em uma máquina com Python e  Django instalados (comando cmd: "pip install django==2.2.22", ou a versão de sua escolha). 
-Eu decidi não utilizar o PostgreSql, que rotineiramente uso, visando a simplicidade e fácil portabilidade do mesmo, assim sendo, o sistema está no seu sql embarcado, não sendo necessárias configurações de DB para visualizar este CRUD.
+Eu decidi não utilizar o PostgreSql, que rotineiramente uso, visando a simplicidade e fácil portabilidade do mesmo, assim sendo, o sistema está no seu sqlite embarcado, não sendo necessárias configurações de DB para visualizar este CRUD.
 
 Após baixar o sistema e colocá-lo na pasta de sua escolha, abra o CMD, vá até o diretório escolhido, entre na pasta projeto (primeira DjangoProject), e insira os seguintes comandos:
 python manage.py makemigrations AlunoApp
@@ -43,7 +43,7 @@ O sistema está simples, não implementei a classe usuário(user/perfis/auth_per
 
 Qualquer dúvida, entrar em contato via gpsantos1999@gmail.com
 
-Boa noite. Divirta-se :D
+Obrigado pela visita. Divirta-se :D
 
 
 

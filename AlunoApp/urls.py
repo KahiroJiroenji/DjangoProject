@@ -15,13 +15,12 @@ urlpatterns = [
     re_path(r'^excluir/aluno/(?P<pk>\w+|)$', views.AlunoDeleteView.as_view(), name='excluir-aluno'),
 
     re_path(r'^listar/turma/$', views.TurmaListView.as_view(), name='listar-turma'),
-    re_path(r'^alterar/turma/$', views.TurmaUpdateView.as_view(), name='alterar-turma'),
     re_path(r'^cadastrar/turma/$', views.TurmaCreateView.as_view(), name='cadastrar-turma'),
-    re_path(r'^excluir/turma/(?P<pk>\w+|)/$', views.TurmaDeleteView.as_view(), name='detalhar-turma'),
+    re_path(r'^alterar/turma/(?P<pk>\w+|)/$', views.TurmaUpdateView.as_view(), name='alterar-turma'),
+    re_path(r'^excluir/turma/(?P<pk>\w+|)/$', views.TurmaDeleteView.as_view(), name='excluir-turma'),
 
     re_path(r'^listar/aluno/turma/$', views.AlunoTurmaListView.as_view(), name='listar-aluno-turma'),
     re_path(r'^cadastrar/aluno/turma/$', views.AlunoTurmaCreateView.as_view(), name='cadastrar-aluno-turma'),
-    re_path(r'^alterar/aluno/turma/(?P<pk>\w+|)/$', views.AlunoTurmaUpdateView.as_view(), name='alterar-aluno-turma'),
     re_path(r'^excluir/aluno/turma/(?P<pk>\w+|)$', views.AlunoTurmaDeleteView.as_view(), name='excluir-aluno-turma'),
 
 ]

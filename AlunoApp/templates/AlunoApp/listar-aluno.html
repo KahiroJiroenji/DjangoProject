@@ -23,6 +23,11 @@
     <body>
         <div class="col-md-12">
             <br>
+            <a href="{% url 'AlunoApp:index' %}">
+                <button type="button" class="btn btn-primary fa fa-file-o pull-left" id="index-btn">
+                    Voltar à Home
+                </button>
+            </a>
             <a href="{% url 'AlunoApp:cadastrar-aluno' %}">
                 <button type="button" class="btn btn-success fa fa-file-o pull-right" id="cmd-novo">
                     Cadastrar Estudante
@@ -37,27 +42,55 @@
         <table class="table table-bordered table-striped tabela-datatables" id="tabela-alunos">
             <thead>
                 <tr>
-                    <th class="text-center">Aluno</th>
-                    <th class="text-center">Código Funcional</th>
-                    <th class="text-center">Criado Por:</th>
-                    <th class="text-center">Criado Em:</th>
-                    <th class="text-center">Alterar</th>
-                    <th class="text-center">Excluir</th>
+                    <th class="text-center">Nome</th>
+                    <th class="text-center">Cpf</th>
+                    <th class="text-center">Telefones:</th>
+                    <th class="text-center">Endereço:</th>
+                    <th class="text-center">Cidade:</th>
+                    <th class="text-center">Email:</th>
+                    <th class="text-center">Ativo:</th>
+                    <!-- <th class="text-center">Ultima Alteração:</th> -->
+                    <th class="text-center">Ações</th>
                 </tr>
             </thead>
             <tbody>
                 {% for aluno in aluno_lst %}
                     <tr>
                         <td class="text-center">{{ aluno.nome }}</td>
-                        <td class="text-center">{{ aluno.cf }}</td>
-                        <td class="text-center">{{ aluno.criado_por }}</td>
-                        <td class="text-center">{{ aluno.data_cadastro }}</td>
-                        <td class="text-center"><button type="button" class="btn btn-warning fa fa-edit alterar" data-url="{% url 'AlunoApp:alterar-aluno' aluno.id %}"></button></td>
-                        <td class="text-center"><button type="button" class="btn btn-danger fa fa-trash excluir" data-url="{% url 'AlunoApp:excluir-aluno' aluno.id %}"></button></td>
+                        <td class="text-center">{{ aluno.cpf }}</td>
+                        <td class="text-center">{{ aluno.telefone_um }} {% if aluno.telefone_dois %} / {{aluno.telefone_dois}} {% endif %}</td>
+                        <td class="text-center">{{ aluno.logradouro }}, {% if aluno.numero %} {{aluno.numero}}.{% else %}  S/N. {% endif %}{% if aluno.complemento %} {{aluno.complemento}}.{% endif %}</td>
+                        <td class="text-center">{{ aluno.cidade }}</td>
+                        <td class="text-center">{{ aluno.email }}</td>
+                        <td class="text-center">{% if aluno.ativo %} Ativo {% else %} Inativo {% endif %}</td>
+                        <!-- <td class="text-center">{% if aluno.data_alteracao %} Alterado em: {{ aluno.data_alteracao }} {% else %} Criado em: {{ aluno.data_cadastro }} {% endif %}</td> -->
+                        <td class="text-center">
+                            <a href="{% url 'AlunoApp:alterar-aluno' aluno.id %}">
+                                <button type="button" class="btn btn-warning">Alterar</button>
+                            </a>
+                            <a href="{% url 'AlunoApp:excluir-aluno' aluno.id %}">
+                                <button type="button" class="btn btn-danger">Excluir</button>
+                            </a>
+                        </td>
+                        
                     </tr>
                 {% endfor %}
             </tbody>
         </table>
+        <br><br><br>
+		<footer class="bg-light text-center text-lg-start" id="footer">
+			<!-- Copyright -->
+			<div class="row p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+				<div class="col-md-6 text-end">
+					© 2022 | Guilherme Picoli dos Santos	
+				</div>
+				<div class="col-md-6 text-start">
+					LinkedIn: <a href="https://www.linkedin.com/in/guipsantos/">@guipsantos</a>	
+				</div>
+			
+			</div>
+			<!-- Copyright -->
+		</footer>
     </body>		
 </html>  
 {% endblock %}
@@ -98,6 +131,10 @@
         .pull-right{
             float:right;
             margin-right:20px;
+        }
+        .pull-left{
+            float:left;
+            margin-left:20px;
         }
 	</style>
 {% endblock %}

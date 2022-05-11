@@ -1,4 +1,4 @@
-from datetime import datetime
+import datetime
 
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Layout, Div, Field, Submit, Row, HTML, Fieldset, ButtonHolder
@@ -18,41 +18,6 @@ class AlunoForm(forms.ModelForm):
         model = Aluno
         fields = '__all__'
         exclude = ['data_alteracao',]
-
-    def __init__(self, *args, **kwargs):
-        super(AlunoForm, self).__init__(*args, **kwargs)
-        self.helper = FormHelper()
-        self.helper.form_method = 'GET'
-        self.helper.layout = Layout(
-            Row(
-                Div(Field('nome'), css_class="col-md-8"),
-                Div(Field('email'), css_class="col-md-4"),
-            ),
-            Row(
-                Div(Field('cpf'), css_class="col-md-6"),
-                Div(Field('telefone_um'), css_class="col-md-3"),
-                Div(Field('telefone_dois'), css_class="col-md-3"),     
-            ),
-            Fieldset(
-                "Dados Residenciais", 
-
-                Row(
-                    
-                    Div(Field('logradouro'), css_class="col-md-6"), 
-                    Div(Field('numero'), css_class="col-md-1"), 
-                    Div(Field('complemento'), css_class="col-md-5"), 
-                    Div(css_class="col-md-12", style="height:25px;"),
-                    Div(Field('cidade'), css_class="col-md-4"), 
-                    
-                ),
-            ),
-            Div(Field('ativo'), css_class="col-md-12"),
-            Row(
-                    Div(
-                    Field(Submit('submit', 'Salvar', css_class='btn btn-primary botao pull-right has-value', data_acao_btn="salvar")), css_class="col-md-12"
-                    )
-                )
-        )
 
 
 class TurmaForm(forms.ModelForm):

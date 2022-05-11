@@ -3,17 +3,18 @@ from django.db.models.deletion import DO_NOTHING
 from simple_history.models import HistoricalRecords
 from django.dispatch.dispatcher import receiver
 from os.path import os
+from cpf_field.models import CPFField
+import datetime
 import uuid
 
 # Create your models here.
 class Aluno(models.Model):
     nome = models.CharField(max_length=250)
-    cpf = models.CharField(max_length=11, verbose_name='CPF')
+    cpf = CPFField(max_length=11, verbose_name='CPF')
     telefone_um = models.CharField(max_length=15, verbose_name='Telefone')
     telefone_dois = models.CharField(max_length=15, verbose_name='Outro Telefone', blank=True, null=True)
-    # data_nasc = models.DateField(blank=False, null=False, verbose_name='Data de Nascimento')
     logradouro = models.CharField(max_length=250, verbose_name='Endereço', blank=False, null=False)
-    numero = models.CharField(max_length=20, verbose_name='Nº', blank=True, null=True)
+    numero = models.IntegerField(max_length=8, verbose_name='Nº', blank=True, null=True)
     complemento = models.CharField(max_length=160, verbose_name='Complemento', blank=True, null=True)
     cidade = models.CharField(max_length=100, verbose_name='Cidade', blank=False, null=False)
     email = models.CharField(verbose_name='Email', max_length=100)
@@ -45,6 +46,7 @@ class Turma(models.Model):
         ('4','Artes'),
         ('5','Educação Física'),
     )
+    nome = models.CharField(max_length=250)
     materia = models.CharField(max_length=1, null=False, blank=False, choices=MATERIA_LST)
     dia_semana = models.CharField(max_length=1, null=False, blank=False, choices=DIA_LST)
     hora_inicio = models.TimeField(blank=True, null=True)

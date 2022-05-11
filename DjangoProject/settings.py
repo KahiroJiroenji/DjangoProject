@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'django_summernote',
     'crispy_forms',
     'simple_history',
+    'cpf_field',
     
 ]
 
@@ -137,8 +138,11 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATIC_URL = '/DjangoProject/staticfiles/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles/')
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
+
 # AUTH_USER_MODEL = 'usuario.Usuario'
 
 MEDIA_URL = '/DjangoProject/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 PROTECTED_MEDIA_ROOT=os.path.join(BASE_DIR, 'media_protegida/')
+
